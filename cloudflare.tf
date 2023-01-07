@@ -42,3 +42,17 @@ resource "cloudflare_record" "mx_alt4" {
   type     = "MX"
   priority = 10
 }
+
+resource "cloudflare_record" "wix_cname" {
+  name    = var.domain
+  type    = "CNAME"
+  zone_id = cloudflare_zone.gaawnings_com.id
+  value = "balancer.wixdns.net"
+}
+
+resource "cloudflare_record" "wix_a_record" {
+  name    = var.domain
+  type    = "A"
+  zone_id = cloudflare_zone.gaawnings_com.id
+  value = "23.236.62.147"
+}
